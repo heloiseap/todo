@@ -1,51 +1,55 @@
-import React from "react"
-import Text from "./text"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority";
+import Text from "./text";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const badgeVariants = cva("inline-flex items-center justify-center rounded-full", {
+export const badgeVariants = cva(
+  "inline-flex items-center justify-center rounded-full",
+  {
     variants: {
-        variant: {
-            primary: "bg-green-light",
-            secondary: "bg-pink-light"
-        },
-        size: {
-            sm: "py-0.5 px-2"
-        }
+      variant: {
+        primary: "bg-green-light",
+        secondary: "bg-pink-light",
+      },
+      size: {
+        sm: "py-0.5 px-2",
+      },
     },
     defaultVariants: {
-        variant: "primary",
-        size: "sm"
-    }
-});
+      variant: "primary",
+      size: "sm",
+    },
+  }
+);
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const badgeTextVariants = cva("", {
-    variants: {
-        variant: {
-            primary: "text-green-dark",
-            secondary: "text-pink-dark"
-        }
+  variants: {
+    variant: {
+      primary: "text-green-dark",
+      secondary: "text-pink-dark",
     },
-    defaultVariants: {
-        variant: "primary"
-    }
-})
+  },
+  defaultVariants: {
+    variant: "primary",
+  },
+});
 
-interface BadgeProps extends React.ComponentProps<"div">, VariantProps<typeof badgeVariants> {
-
-}
+interface BadgeProps
+  extends React.ComponentProps<"div">,
+    VariantProps<typeof badgeVariants> {}
 
 export default function Badge({
-    variant,
-    size,
-    className,
-    children,
-    ...props
-}) {
-    return (
-        <div className={badgeVariants({variant, size, className})} {...props}>
-            <Text variant="body-sm-bold" className={badgeTextVariants({variant})}>{children}</Text>
-        </div>
-    )
+  variant,
+  size,
+  className,
+  children,
+  ...props
+}: BadgeProps) {
+  return (
+    <div className={badgeVariants({ variant, size, className })} {...props}>
+      <Text variant="body-sm-bold" className={badgeTextVariants({ variant })}>
+        {children}
+      </Text>
+    </div>
+  );
 }
