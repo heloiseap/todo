@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const skeletonVariants = cva(`animate-pulse bg-gray-200`, {
+export const skeletonVariants = cva(`animate-pulse bg-gray-200 pointer-events-none`, {
     variants: {
         rounded: {
             sm: "rounded-sm",
